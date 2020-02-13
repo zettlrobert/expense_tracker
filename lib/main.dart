@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './transaction.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.deepPurple,
       ),
       home: MyHomePage(),
     );
@@ -29,6 +30,12 @@ class MyHomePage extends StatelessWidget {
         date: DateTime.now()),
   ];
 
+  // String titleInput;
+  // String amountInput;
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,14 +43,50 @@ class MyHomePage extends StatelessWidget {
         title: Text('Expense Tracker'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             child: Card(
-              color: Colors.purple,
+              color: Colors.deepPurple,
               child: Text('Chart!'),
               elevation: 5,
+            ),
+          ),
+          Card(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Title'
+                    ),
+                    controller: titleController,
+                    // onChanged: (val) {
+                    //   titleInput = val;
+                    // },
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount'
+                      ),
+                      controller: amountController,
+                      // onChanged: (val) {
+                      //   amountInput = val;
+                      // },
+                  ),
+                  FlatButton(
+                    child: Text('Add Transaction'),
+                    textColor: Colors.purple,
+                    onPressed: () {
+                      // print(titleInput);
+                      // print(amountInput);
+                      print(titleController.text);
+                    },
+                    ),
+                ],
+              ),
             ),
           ),
           Column(
@@ -57,15 +100,15 @@ class MyHomePage extends StatelessWidget {
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.purple, width: 2),
+                        border: Border.all(color: Colors.deepPurple, width: 2),
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tx.amount.toString(),
+                        '€ ${tx.amount}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.purpleAccent,
+                          color: Colors.purple,
                         ),
                       ),
                     ),
@@ -77,10 +120,11 @@ class MyHomePage extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            ),
+                          ),
                         ),
                         Text(
-                          tx.date.toString(),
+                          //could use a constructor on DateFormat instaead of StringPattern
+                          DateFormat('yyyy MMMM, dd').format(tx.date),
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 12,
