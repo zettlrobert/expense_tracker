@@ -1,6 +1,7 @@
 # expense_tracker
 
-A new Flutter project.
+A simple expense Tracker with a weekly Summary.
+Example Project to learn some basic Flutter Concepts and Widget Alignment + Styling.
 
 ## Getting Started
 
