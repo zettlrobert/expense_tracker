@@ -11,15 +11,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.purple,
       ),
       home: MyHomePage(),
@@ -27,10 +18,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = []
-  
+  final List<Transaction> transactions = [
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.15, date: DateTime.now()),
+    Transaction(
+        id: 't2',
+        title: 'Weekly Groceries',
+        amount: 14.54,
+        date: DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,21 +36,65 @@ class MyHomePage extends StatelessWidget {
         title: Text('Expense Tracker'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-        Container(
-          child: Card(
-          color: Colors.purple,
-            child: Text('Chart!'),
-            elevation: 5,
+          Container(
+            child: Card(
+              color: Colors.purple,
+              child: Text('Chart!'),
+              elevation: 5,
+            ),
           ),
-        ),
-        Card(
-          color: Colors.blue,
-          child: Text('List of Tx'),
+          Column(
+            children: transactions.map(
+                // Map takes Fucntion that gets Executed every time
+                (tx) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.purple, width: 2),
+                      ),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        tx.amount.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purpleAccent,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          tx.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            ),
+                        ),
+                        Text(
+                          tx.date.toString(),
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
           ),
-      ],),
+        ],
+      ),
     );
   }
 }
