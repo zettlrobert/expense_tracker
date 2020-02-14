@@ -28,7 +28,7 @@ class TransactionList extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColorDark,
                     ),
                   ),
                 ),
@@ -37,17 +37,14 @@ class TransactionList extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       transactions[index].title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
+                      style: Theme.of(context).textTheme.title,
                     ),
                     Text(
                       //could use a constructor on DateFormat instaead of StringPattern
                       DateFormat('yyyy MMMM, dd')
                           .format(transactions[index].date),
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: Theme.of(context).accentColor,
                         fontSize: 12,
                       ),
                     ),
