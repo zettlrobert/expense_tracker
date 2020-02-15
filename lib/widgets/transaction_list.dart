@@ -91,7 +91,6 @@ class TransactionList extends StatelessWidget {
                     ),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),
-                      style: TextStyle(color: Theme.of(context).accentColor),
                     ),
                   ),
                 );
