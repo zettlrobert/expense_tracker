@@ -159,9 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
   }
 
-
   Widget _buildAppBar() {
-    return  Platform.isIOS
+    return Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text('Expense Tracker'),
             trailing: Row(
@@ -184,7 +183,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           );
   }
-
 
   @override
   Widget build(BuildContext context) {
