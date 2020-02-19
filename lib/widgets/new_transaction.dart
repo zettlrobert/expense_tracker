@@ -18,32 +18,29 @@ class _NewTransactionState extends State<NewTransaction> {
   final _amountController = TextEditingController();
   DateTime _selectedDate;
 
+  // // Here could be Constructor for Constructor Sate
+  // _NewTransactionState(){
+  //   print('constructor NewTransaction State');
+  // }
 
+  // @override
+  // _NewTransactionState() {
+  //   super.initState();
+  //   // Initialisation for example loading data
+  //   print('initState()');
+  // }
 
-  // Here could be Constructor for Constructor Sate
-  _NewTransactionState(){
-    print('constructor NewTransaction State');
-  }
+  // @override
+  // void didUpdateWidget(NewTransaction oldWidget) {
+  //   print('didUpdate()');
+  //   super.didUpdateWidget(oldWidget);
+  // }
 
-  @override
-  _NewTransactionState() {
-    super.initState();
-    // Initialisation for example loading data
-    print('initState()');
-  }
-
-  @override
-  void didUpdateWidget(NewTransaction oldWidget) {
-    print('didUpdate()');
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    print('dispose()');
-    super.dispose();
-  }
-
+  // @override
+  // void dispose() {
+  //   print('dispose()');
+  //   super.dispose();
+  // }
 
   void _submitData() {
     if (_amountController.text.isEmpty) {
