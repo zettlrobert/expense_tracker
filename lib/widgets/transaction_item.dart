@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 
 import '../models/transaction.dart';
 
-
 class TransactionItem extends StatelessWidget {
   const TransactionItem({
     Key key,
@@ -26,8 +25,7 @@ class TransactionItem extends StatelessWidget {
           radius: 30,
           child: Padding(
             padding: EdgeInsets.all(6),
-            child: FittedBox(
-                child: Text('${transaction.amount} €')),
+            child: FittedBox(child: Text('${transaction.amount} €')),
           ),
         ),
         title: Text(

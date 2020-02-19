@@ -72,10 +72,10 @@ class TransactionList extends StatelessWidget {
               //     ],
               //   ),
               // );
-              return TransactionItem(transaction: transactions[index], deleteTx: deleteTx);
+              return TransactionItem(
+                  transaction: transactions[index], deleteTx: deleteTx);
             },
             itemCount: transactions.length,
           );
   }
 }
-
