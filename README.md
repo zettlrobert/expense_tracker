@@ -1,5 +1,7 @@
 # expense_tracker
 
+![cover](docs/cover.png)
+
 A simple expense Tracker with a weekly Summary.
 Example Project to learn some basic Flutter Concepts and Widget Alignment + Styling.
 
